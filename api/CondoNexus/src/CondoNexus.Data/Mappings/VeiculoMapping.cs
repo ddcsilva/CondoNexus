@@ -48,5 +48,12 @@ public class VeiculoMapping : IEntityTypeConfiguration<Veiculo>
             .HasConstraintName("FK_VEICULOS_UNIDADES");
 
         builder.ToTable("TB_VEICULOS");
+
+        // Mantém veículos quando a unidade é excluída
+        builder.HasOne(v => v.Unidade)
+               .WithMany(u => u.Veiculos)
+               .HasForeignKey(v => v.UnidadeId)
+               .OnDelete(DeleteBehavior.ClientSetNull)
+               .HasConstraintName("FK_Veiculo_Unidade");
     }
 }

@@ -53,5 +53,12 @@ public class MoradorMapping : IEntityTypeConfiguration<Morador>
             .HasConstraintName("FK_MORADORES_UNIDADES");
 
         builder.ToTable("TB_MORADORES");
+
+        // Mantém moradores quando a unidade é excluída
+        builder.HasOne(m => m.Unidade)
+               .WithMany(u => u.Moradores)
+               .HasForeignKey(m => m.UnidadeId)
+               .OnDelete(DeleteBehavior.ClientSetNull)
+               .HasConstraintName("FK_Morador_Unidade");
     }
 }
