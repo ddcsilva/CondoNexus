@@ -11,6 +11,7 @@ public class Morador : BaseEntity
         CPF = string.Empty;
         Telefone = string.Empty;
         Email = string.Empty;
+        Foto = string.Empty;
     }
 
     public string Nome { get; set; }
@@ -18,6 +19,7 @@ public class Morador : BaseEntity
     public string Telefone { get; set; }
     public string Email { get; set; }
     public DateTime DataNascimento { get; set; }
+    public string Foto { get; set; }
     public int UnidadeId { get; set; }
 
     // Relacionamento N:1 com Unidade
