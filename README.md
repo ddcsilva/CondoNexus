@@ -5,6 +5,7 @@ CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o pr
 ## Tecnologias
 
 - API: .NET 6
+- Cliente: Angular 14
 
 ## Funcionalidades
 
