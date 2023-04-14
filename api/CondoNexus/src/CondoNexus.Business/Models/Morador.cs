@@ -20,7 +20,7 @@ public class Morador : BaseEntity
     public string Email { get; set; }
     public DateTime DataNascimento { get; set; }
     public string Foto { get; set; }
-    public int UnidadeId { get; set; }
+    public Guid UnidadeId { get; set; }
 
     // Relacionamento N:1 com Unidade
     public Unidade? Unidade { get; set; }

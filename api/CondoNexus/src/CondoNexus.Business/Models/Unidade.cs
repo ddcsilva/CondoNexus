@@ -17,7 +17,7 @@ public class Unidade : BaseEntity
     public int Andar { get; set; }
     public string Bloco { get; set; }
     public StatusResidencial StatusResidencial { get; set; }
-    public int CondominioId { get; set; }
+    public Guid CondominioId { get; set; }
 
     // Relacionamento N:1 com Condomínio
     public Condominio? Condominio { get; set; }

@@ -18,7 +18,7 @@ public class Veiculo : BaseEntity
     public string Modelo { get; set; }
     public string Cor { get; set; }
     public int Ano { get; set; }
-    public int UnidadeId { get; set; }
+    public Guid UnidadeId { get; set; }
 
     // Relacionamento N:1 com Unidade
     public Unidade? Unidade { get; set; }
