@@ -1,13 +1,10 @@
 ﻿using CondoNexus.Business.Models;
-using System;
-using System.Threading.Tasks;
 
-namespace CondoNexus.Business.Interfaces
+namespace CondoNexus.Business.Interfaces;
+
+public interface IUnidadeService : IDisposable
 {
-    public interface IUnidadeService : IDisposable
-    {
-        Task Adicionar(Unidade unidade);
-        Task Atualizar(Unidade unidade);
-        Task Remover(Guid id);
-    }
+    Task Adicionar(Unidade unidade);
+    Task Atualizar(Unidade unidade);
+    Task Remover(Guid id);
 }
