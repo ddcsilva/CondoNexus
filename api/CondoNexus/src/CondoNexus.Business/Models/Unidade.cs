@@ -1,4 +1,6 @@
-﻿namespace CondoNexus.Business.Models;
+﻿using CondoNexus.Business.Models.Enums;
+
+namespace CondoNexus.Business.Models;
 
 /// <summary>
 /// Representa uma unidade residencial em um condomínio.

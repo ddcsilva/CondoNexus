@@ -10,10 +10,10 @@ public class CondoNexusContext : DbContext
         
     }
 
-    public DbSet<Condominio> Condominios { get; set; }
-    public DbSet<Unidade> Unidades { get; set; }
-    public DbSet<Morador> Moradores { get; set; }
-    public DbSet<Veiculo> Veiculos { get; set; }
+    public DbSet<Condominio>? Condominios { get; set; }
+    public DbSet<Unidade>? Unidades { get; set; }
+    public DbSet<Morador>? Moradores { get; set; }
+    public DbSet<Veiculo>? Veiculos { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

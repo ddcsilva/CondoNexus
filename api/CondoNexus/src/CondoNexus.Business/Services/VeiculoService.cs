@@ -1,4 +1,6 @@
 ﻿using CondoNexus.Business.Interfaces;
+using CondoNexus.Business.Interfaces.Repositories;
+using CondoNexus.Business.Interfaces.Services;
 using CondoNexus.Business.Models;
 using CondoNexus.Business.Validations;
 
@@ -8,7 +10,8 @@ public class VeiculoService : BaseService, IVeiculoService
 {
     private readonly IVeiculoRepository _veiculoRepository;
 
-    public VeiculoService(IVeiculoRepository veiculoRepository)
+    public VeiculoService(IVeiculoRepository veiculoRepository, 
+                          INotificador notificador) : base(notificador)
     {
         _veiculoRepository = veiculoRepository;
     }
@@ -20,6 +23,12 @@ public class VeiculoService : BaseService, IVeiculoService
             return;
         }
 
+        if (_veiculoRepository.Buscar(f => f.Placa == veiculo.Placa).Result.Any())
+        {
+            Notificar("Já existe um veículo com esta placa informada.");
+            return;
+        }
+
         await _veiculoRepository.Adicionar(veiculo);
     }
 
@@ -27,6 +36,13 @@ public class VeiculoService : BaseService, IVeiculoService
     {
         if (!ExecutarValidacao(new VeiculoValidation(), veiculo))
         {
+            return;
+        }
+
+        var veiculoExistente = await _veiculoRepository.Buscar(f => f.Placa == veiculo.Placa && f.Id != veiculo.Id);
+        if (veiculoExistente.Any())
+        {
+            Notificar("Já existe um veículo com esta placa informada.");
             return;
         }
 

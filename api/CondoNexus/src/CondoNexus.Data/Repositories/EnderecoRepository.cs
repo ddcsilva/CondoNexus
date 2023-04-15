@@ -1,4 +1,4 @@
-﻿using CondoNexus.Business.Interfaces;
+﻿using CondoNexus.Business.Interfaces.Repositories;
 using CondoNexus.Business.Models;
 using CondoNexus.Data.Contexts;
 

@@ -1,5 +1,6 @@
-﻿using CondoNexus.Business.Interfaces;
+﻿using CondoNexus.Business.Interfaces.Repositories;
 using CondoNexus.Business.Models;
+using CondoNexus.Business.Models.Enums;
 using CondoNexus.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 

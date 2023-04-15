@@ -1,4 +1,6 @@
 ﻿using CondoNexus.Business.Interfaces;
+using CondoNexus.Business.Interfaces.Repositories;
+using CondoNexus.Business.Interfaces.Services;
 using CondoNexus.Business.Models;
 using CondoNexus.Business.Validations;
 
@@ -10,7 +12,8 @@ public class CondominioService : BaseService, ICondominioService
     private readonly IEnderecoRepository _enderecoRepository;
 
     public CondominioService(ICondominioRepository condominioRepository,
-                             IEnderecoRepository enderecoRepository)
+                             IEnderecoRepository enderecoRepository,
+                             INotificador notificador) : base(notificador)
     {
         _condominioRepository = condominioRepository;
         _enderecoRepository = enderecoRepository;
@@ -23,7 +26,7 @@ public class CondominioService : BaseService, ICondominioService
             return;
         }
 
-        if (!ExecutarValidacao(new EnderecoValidation(), condominio.Endereco))
+        if (!ExecutarValidacao(new EnderecoValidation(), condominio.Endereco ?? new Endereco()))
         {
             return;
         }
@@ -41,6 +44,13 @@ public class CondominioService : BaseService, ICondominioService
     {
         if (!ExecutarValidacao(new CondominioValidation(), condominio))
         {
+            return;
+        }
+
+        var condominioExistente = await _condominioRepository.Buscar(f => f.CNPJ == condominio.CNPJ && f.Id != condominio.Id);
+        if (condominioExistente.Any())
+        {
+            Notificar("Já existe um condomínio com este CNPJ informado.");
             return;
         }
 

@@ -1,7 +1,7 @@
 ﻿using CondoNexus.Business.Models;
 using System.Linq.Expressions;
 
-namespace CondoNexus.Business.Interfaces;
+namespace CondoNexus.Business.Interfaces.Repositories;
 
 public interface IRepository<TEntity> : IDisposable where TEntity : BaseEntity
 {

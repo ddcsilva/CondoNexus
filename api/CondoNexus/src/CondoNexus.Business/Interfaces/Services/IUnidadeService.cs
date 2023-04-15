@@ -1,6 +1,6 @@
 ﻿using CondoNexus.Business.Models;
 
-namespace CondoNexus.Business.Interfaces;
+namespace CondoNexus.Business.Interfaces.Services;
 
 public interface IUnidadeService : IDisposable
 {
