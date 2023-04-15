@@ -14,7 +14,7 @@ public class CondominioValidation : AbstractValidator<Condominio>
             .WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres");
 
         RuleFor(c => c.CNPJ)
-            .Must(DocumentoValidacao.ValidarCnpj).WithMessage("O CNPJ fornecido é inválido.");
+            .Must(DocumentoValidation.ValidarCnpj).WithMessage("O CNPJ fornecido é inválido.");
 
         RuleFor(c => c.NumeroUnidades)
             .GreaterThan(0).WithMessage("O campo {PropertyName} precisa ser maior que {ComparisonValue}");

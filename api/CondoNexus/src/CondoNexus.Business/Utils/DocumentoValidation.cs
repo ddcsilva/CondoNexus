@@ -1,6 +1,6 @@
 ﻿namespace CondoNexus.Domain.Utils;
 
-public static class DocumentoValidacao
+public static class DocumentoValidation
 {
     public static bool ValidarCpf(string cpf)
     {

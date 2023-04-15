@@ -15,7 +15,7 @@ public class MoradorValidation : AbstractValidator<Morador>
         RuleFor(m => m.CPF)
             .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
             .Length(11).WithMessage("O campo {PropertyName} precisa ter {MaxLength} caracteres")
-            .Must(DocumentoValidacao.ValidarCpf).WithMessage("O CPF fornecido é inválido.");
+            .Must(DocumentoValidation.ValidarCpf).WithMessage("O CPF fornecido é inválido.");
 
         RuleFor(m => m.Telefone)
             .NotEmpty().WithMessage("O campo {PropertyName} precisa ser fornecido")
