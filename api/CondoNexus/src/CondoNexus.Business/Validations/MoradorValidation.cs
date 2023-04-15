@@ -1,5 +1,5 @@
 ﻿using CondoNexus.Business.Models;
-using CondoNexus.Domain.Utils;
+using CondoNexus.Business.Utils;
 using FluentValidation;
 
 namespace CondoNexus.Business.Validations;

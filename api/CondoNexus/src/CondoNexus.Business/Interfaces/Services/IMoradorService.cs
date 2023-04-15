@@ -1,11 +1,10 @@
 ﻿using CondoNexus.Business.Models;
 
-namespace CondoNexus.Business.Interfaces.Services
+namespace CondoNexus.Business.Interfaces.Services;
+
+public interface IMoradorService : IDisposable
 {
-    public interface IMoradorService : IDisposable
-    {
-        Task Adicionar(Morador morador);
-        Task Atualizar(Morador morador);
-        Task Remover(Guid id);
-    }
+    Task Adicionar(Morador morador);
+    Task Atualizar(Morador morador);
+    Task Remover(Guid id);
 }

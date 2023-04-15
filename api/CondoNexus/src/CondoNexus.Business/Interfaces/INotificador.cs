@@ -1,16 +1,15 @@
 ﻿using CondoNexus.Business.Notifications;
 
-namespace CondoNexus.Business.Interfaces
+namespace CondoNexus.Business.Interfaces;
+
+public interface INotificador
 {
-    public interface INotificador
-    {
-        // Verifica se existem notificações armazenadas
-        bool TemNotificacao();
+    // Verifica se existem notificações armazenadas
+    bool TemNotificacao();
 
-        // Obtém a lista de notificações armazenadas
-        List<Notificacao> ObterNotificacoes();
+    // Obtém a lista de notificações armazenadas
+    List<Notificacao> ObterNotificacoes();
 
-        // Manipula e armazena uma nova notificação
-        void Handle(Notificacao notificacao);
-    }
+    // Manipula e armazena uma nova notificação
+    void Handle(Notificacao notificacao);
 }

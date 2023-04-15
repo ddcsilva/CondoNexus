@@ -1,4 +1,4 @@
-﻿namespace CondoNexus.Domain.Utils;
+﻿namespace CondoNexus.Business.Utils;
 
 public static class DocumentoValidation
 {
