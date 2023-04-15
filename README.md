@@ -1,6 +1,6 @@
 # CondoNexus - API
 
-CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o projeto prático de pós-graduação da PUC Minas. O objetivo do sistema é facilitar a administração de informações sobre unidades, moradores e veículos.
+CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o projeto prático de pós-graduação da PUC Minas. O projeto foi inspirado no curso [REST com ASP.NET Core WebAPI](https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi) e adaptado para atender às necessidades específicas de um sistema de gerenciamento de condomínios. O objetivo do sistema é facilitar a administração de informações sobre unidades, moradores e veículos.
 
 ## Tecnologias
 
@@ -22,13 +22,12 @@ CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o pr
 
 ## Desenvolvedor
 
-- Danilo Silva https://github.com/ddcsilva
+Danilo Silva - https://github.com/ddcsilva
 
 ## Licença
 
-Este projeto é disponibilizado sob a licença [MIT License](https://opensource.org/licenses/MIT). Essa licença permite o uso, a cópia, a modificação e a distribuição do código-fonte para fins não comerciais, desde que a atribuição seja feita ao autor original.
+Este projeto é disponibilizado sob a licença MIT License. Essa licença permite o uso, a cópia, a modificação e a distribuição do código-fonte para fins não comerciais, desde que a atribuição seja feita ao autor original.
 
 ## Contato
 
 danilo.silva@msn.com
-
