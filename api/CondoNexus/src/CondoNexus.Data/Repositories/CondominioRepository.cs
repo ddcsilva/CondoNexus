@@ -1,6 +1,7 @@
 ﻿using CondoNexus.Business.Interfaces;
 using CondoNexus.Business.Models;
 using CondoNexus.Data.Contexts;
+using Microsoft.EntityFrameworkCore;
 
 namespace CondoNexus.Data.Repositories;
 
@@ -8,5 +9,26 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
 {
     public CondominioRepository(CondoNexusContext context) : base(context)
     {
+    }
+
+    public async Task<Condominio?> ObterCondominioComUnidadesOcupadas(Guid condominioId)
+    {
+        return await _context.Condominios
+            .Include(c => c.Unidades)
+            .Include(c => c.Endereco)
+            .Where(c => c.Id == condominioId)
+            .Select(c => new Condominio
+            {
+                Id = c.Id,
+                Nome = c.Nome,
+                CNPJ = c.CNPJ,
+                NumeroUnidades = c.NumeroUnidades,
+                NumeroBlocos = c.NumeroBlocos,
+                NumeroAndares = c.NumeroAndares,
+                DataFundacao = c.DataFundacao,
+                Unidades = c.Unidades.Where(u => u.StatusResidencial == StatusResidencial.Ocupado).ToList(),
+                Endereco = c.Endereco
+            })
+            .FirstOrDefaultAsync();
     }
 }
