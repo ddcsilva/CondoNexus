@@ -16,6 +16,7 @@ public class Condominio : BaseEntity
     public string CNPJ { get; set; }
     public int NumeroUnidades { get; set; }
     public int NumeroBlocos { get; set; }
+    public int NumeroAndares { get; set; }
     public DateTime DataFundacao { get; set; }
 
     // Relacionamento 1:N com Unidade

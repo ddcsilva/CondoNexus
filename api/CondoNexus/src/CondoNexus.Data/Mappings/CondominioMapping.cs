@@ -32,6 +32,10 @@ public class CondominioMapping : IEntityTypeConfiguration<Condominio>
             .IsRequired()
             .HasColumnName("CND_NUMERO_BLOCOS");
 
+        builder.Property(c => c.NumeroAndares)
+            .IsRequired()
+            .HasColumnName("CND_NUMERO_ANDARES");
+
         builder.Property(c => c.DataFundacao)
             .IsRequired()
             .HasColumnName("CND_DATA_FUNDACAO");
