@@ -12,6 +12,13 @@ public class CondominioRepository : Repository<Condominio>, ICondominioRepositor
     {
     }
 
+    public async Task<Condominio?> ObterCondominioEndereco(Guid condominioId)
+    {
+        return await _context.Condominios
+            .Include(c => c.Endereco)
+            .FirstOrDefaultAsync(c => c.Id == condominioId);
+    }
+
     public async Task<Condominio?> ObterCondominioComUnidadesOcupadas(Guid condominioId)
     {
         return await _context.Condominios
