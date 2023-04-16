@@ -1,5 +1,6 @@
-﻿using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+﻿using CondoNexus.API.Helpers;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel;
 
 namespace CondoNexus.API.Configurations
 {
@@ -7,7 +8,11 @@ namespace CondoNexus.API.Configurations
     {
         public static IServiceCollection AddApiConfiguration(this IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.Converters.Add(new CustomDateTimeConverter("dd/MM/yyyy"));
+            });
+
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

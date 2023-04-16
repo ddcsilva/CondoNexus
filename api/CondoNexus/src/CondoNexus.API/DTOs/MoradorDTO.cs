@@ -26,7 +26,7 @@ public class MoradorDTO
 
     [Required(ErrorMessage = "O campo {0} é obrigatório")]
     [DataType(DataType.Date, ErrorMessage = "Data em formato inválido")]
-    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:yyyy-MM-dd}")]
+    [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
     [DisplayName("Data de Nascimento")]
     public DateTime DataNascimento { get; set; }
 

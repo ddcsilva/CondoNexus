@@ -39,14 +39,14 @@ public class CondominiosController : MainController
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<CondominioDTO>> ObterPorId(Guid id)
     {
-        var condominio = await ObterCondominioEndereco(id);
+        var condominioDTO = await ObterCondominioEndereco(id);
 
-        if (condominio == null)
+        if (condominioDTO == null)
         {
             return NotFound();
         }
 
-        return condominio;
+        return condominioDTO;
     }
 
     [HttpPost]

@@ -11,6 +11,20 @@ public class MoradorRepository : Repository<Morador>, IMoradorRepository
     {
     }
 
+    public async Task<List<Morador>> ObterMoradoresUnidades()
+    {
+        return await _dbSet.AsNoTracking()
+            .Include(m => m.Unidade)
+            .ToListAsync();
+    }
+
+    public async Task<Morador> ObterMoradorUnidade(Guid moradorId)
+    {
+        return await _dbSet.AsNoTracking()
+            .Include(m => m.Unidade)
+            .FirstOrDefaultAsync(m => m.Id == moradorId);
+    }
+
     public async Task<List<Morador>> ObterMoradoresPorUnidade(Guid unidadeId)
     {
         return await _dbSet.AsNoTracking()
