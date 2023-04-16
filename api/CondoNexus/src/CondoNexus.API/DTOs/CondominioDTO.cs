@@ -32,5 +32,5 @@ public class CondominioDTO
 
     public IEnumerable<UnidadeDTO> Unidades { get; set; }
 
-    public EnderecoDTO Endereco { get; set; }
+    public EnderecoDTO? Endereco { get; set; }
 }

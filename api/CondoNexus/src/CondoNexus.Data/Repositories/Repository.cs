@@ -46,8 +46,12 @@ public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity :
 
     public virtual async Task Remover(Guid id)
     {
-        _dbSet.Remove(new TEntity { Id = id });
-        await SaveChanges();
+        var entity = await _dbSet.FindAsync(id);
+        if (entity != null)
+        {
+            _dbSet.Remove(entity);
+            await SaveChanges();
+        }
     }
 
     public async Task<int> SaveChanges()

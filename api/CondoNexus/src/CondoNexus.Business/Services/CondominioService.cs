@@ -26,7 +26,7 @@ public class CondominioService : BaseService, ICondominioService
             return;
         }
 
-        if (!ExecutarValidacao(new EnderecoValidation(), condominio.Endereco ?? new Endereco()))
+        if (!ExecutarValidacao(new EnderecoValidation(), condominio.Endereco))
         {
             return;
         }
