@@ -1,6 +1,6 @@
 # CondoNexus - API
 
-CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o projeto prático de pós-graduação da PUC Minas. O projeto foi inspirado no curso [REST com ASP.NET Core WebAPI](https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi) e adaptado para atender às necessidades específicas de um sistema de gerenciamento de condomínios. O objetivo do sistema é facilitar a administração de informações sobre unidades, moradores e veículos.
+CondoNexus é um sistema de gerenciamento de condomínios desenvolvido para o projeto prático de pós-graduação da PUC Minas. O projeto foi inspirado no curso [REST com ASP.NET Core WebAPI](https://desenvolvedor.io/curso-online-rest-com-asp-net-core-webapi) e no ebook [The Ultimate Guide to ASP.NET Core Web API - Second Edition](https://code-maze.com/ultimate-aspnetcore-webapi-second-edition/), além de ser adaptado para atender às necessidades específicas de um sistema de gerenciamento de condomínios. O objetivo do sistema é facilitar a administração de informações sobre unidades, moradores e veículos.
 
 ## Tecnologias
 
