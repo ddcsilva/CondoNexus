@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using CondoNexus.API.DTOs;
+using CondoNexus.Business.Interfaces;
 using CondoNexus.Business.Interfaces.Repositories;
 using CondoNexus.Business.Interfaces.Services;
 using CondoNexus.Business.Models;
@@ -12,14 +13,18 @@ namespace CondoNexus.API.Controllers;
 public class CondominiosController : MainController
 {
     private readonly ICondominioRepository _condominioRepository;
+    private readonly IEnderecoRepository _enderecoRepository;
     private readonly ICondominioService _condominioService;
     private readonly IMapper _mapper;
 
     public CondominiosController(ICondominioRepository condominioRepository,
+                                 IEnderecoRepository enderecoRepository,
                                  ICondominioService condominioService,
-                                 IMapper mapper)
+                                 INotificador notificador,
+                                 IMapper mapper) : base(notificador)
     {
         _condominioRepository = condominioRepository;
+        _enderecoRepository = enderecoRepository;
         _condominioService = condominioService;
         _mapper = mapper;
     }
@@ -49,12 +54,12 @@ public class CondominiosController : MainController
     {
         if (!ModelState.IsValid)
         {
-            return BadRequest();
+            return CustomResponse(ModelState);
         }
 
         await _condominioService.Adicionar(_mapper.Map<Condominio>(condominioDTO));
 
-        return Ok(condominioDTO);
+        return CustomResponse(condominioDTO);
     }
 
     [HttpPut("{id:guid}")]
@@ -62,17 +67,15 @@ public class CondominiosController : MainController
     {
         if (id != condominioDTO.Id)
         {
-            return BadRequest();
+            NotificarErro("O id informado não é o mesmo que foi passado na query");
+            return CustomResponse(condominioDTO);
         }
 
-        if (!ModelState.IsValid)
-        {
-            return BadRequest();
-        }
+        if (!ModelState.IsValid) return CustomResponse(ModelState);
 
         await _condominioService.Atualizar(_mapper.Map<Condominio>(condominioDTO));
 
-        return Ok(condominioDTO);
+        return CustomResponse(condominioDTO);
     }
 
     [HttpDelete("{id:guid}")]
@@ -84,7 +87,29 @@ public class CondominiosController : MainController
 
         await _condominioService.Remover(id);
 
-        return Ok(condominioDTO);
+        return CustomResponse(condominioDTO);
+    }
+
+    [HttpGet("endereco/{id:guid}")]
+    public async Task<EnderecoDTO> ObterEnderecoPorId(Guid id)
+    {
+        return _mapper.Map<EnderecoDTO>(await _enderecoRepository.ObterPorId(id));
+    }
+
+    [HttpPut("endereco/{id:guid}")]
+    public async Task<IActionResult> AtualizarEndereco(Guid id, EnderecoDTO enderecoDTO)
+    {
+        if (id != enderecoDTO.Id)
+        {
+            NotificarErro("O id informado não é o mesmo que foi passado na query");
+            return CustomResponse(enderecoDTO);
+        }
+
+        if (!ModelState.IsValid) return CustomResponse(ModelState);
+
+        await _condominioService.AtualizarEndereco(_mapper.Map<Endereco>(enderecoDTO));
+
+        return CustomResponse(enderecoDTO);
     }
 
     private async Task<CondominioDTO> ObterCondominioEndereco(Guid id)
