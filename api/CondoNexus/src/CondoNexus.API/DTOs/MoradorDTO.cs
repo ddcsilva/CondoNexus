@@ -39,5 +39,5 @@ public class MoradorDTO
     [DisplayName("Unidade")]
     public Guid UnidadeId { get; set; }
 
-    public UnidadeDTO Unidade { get; set; }
+    public UnidadeDTO? Unidade { get; set; }
 }

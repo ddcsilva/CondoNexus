@@ -27,7 +27,7 @@ public class UnidadeDTO
     [DisplayName("Condomínio")]
     public Guid CondominioId { get; set; }
 
-    public CondominioDTO Condominio { get; set; }
+    public CondominioDTO? Condominio { get; set; }
 
     public ICollection<MoradorDTO> Moradores { get; set; }
 
